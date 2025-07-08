@@ -1,40 +1,70 @@
+import { ListGroup } from "react-bootstrap";
+import AssignmentsControls from "./AssignmentsControls";
+import { BsGripVertical } from "react-icons/bs";
+import { IoMdArrowDropdown } from "react-icons/io";
+import AssignmentToolbarControlButtons from "./AssignmentToolbarControlButtons";
+import { LuFilePenLine } from "react-icons/lu";
+import AssignmentControlButtons from "./AssignmentControlButtons";
 export default function Assignments() {
   return (
     <div id="wd-assignments">
-      <input placeholder="Search for Assignments"
-             id="wd-search-assignment" />
-      <button id="wd-add-assignment-group">+ Group</button>
-      <button id="wd-add-assignment">+ Assignment</button>
-      <h3 id="wd-assignments-title">
-        ASSIGNMENTS 40% of Total <button>+</button> </h3>
-      <ul id="wd-assignment-list">
-        <li className="wd-assignment-list-item">
-          <a href="#/Kambaz/Courses/1234/Assignments/123"
-             className="wd-assignment-link" >
-            A1 - ENV + HTML
-          </a> 
-          <p className="wd-assignment-description">
-            Multiple Modules | <strong>Not available until</strong> May 6 at 12:00am | <strong>Due</strong> May 13 at 11:59pm | 100 pts
-          </p>
-        </li>
-        <li className="wd-assignment-list-item">
-          <a href="#/Kambaz/Courses/1234/Assignments/234"
-             className="wd-assignment-link" >
-            A2 - CSS + BOOTSTRAP
-          </a> 
-          <p className="wd-assignment-description">
-            Multiple Modules | <strong>Not available until</strong> May 13 at 12:00am | <strong>Due</strong> May 20 at 11:59pm | 100 pts
-          </p>
-        </li>
-        <li className="wd-assignment-list-item">
-          <a href="#/Kambaz/Courses/1234/Assignments/345"
-             className="wd-assignment-link" >
-            A3 - JAVASCRIPT + REACT
-          </a> 
-          <p className="wd-assignment-description">
-            Multiple Modules | <strong>Not available until</strong> May 20 at 12:00am | <strong>Due</strong> May 27 at 11:59pm | 100 pts
-          </p>
-        </li>
-      </ul>
+      <AssignmentsControls /><br />
+      <ListGroup className="rounded-0" id="wd-assignments-title">
+        <ListGroup.Item className="wd-module p-0 mb-5 fs-5 border-gray">
+          <div className="wd-title p-3 ps-2 bg-secondary"> 
+            <BsGripVertical className="me-2 fs-3" /><IoMdArrowDropdown className="me-2 fs-3" />ASSIGNMENTS <AssignmentToolbarControlButtons />
+          </div>
+          <ListGroup className="wd-assignments rounded-0">
+            <ListGroup.Item className="wd-assignment p-3 ps-1 d-flex align-items-center">
+              <BsGripVertical className="me-2 fs-3" />
+              <LuFilePenLine className="me-2 fs-3" color="green" />
+              <div className="d-flex flex-column flex-grow-1">
+                <a className="wd-assignment-link" href="#/Kambaz/Courses/1234/Assignments/123">
+                  <strong>A1</strong>
+                </a>
+                <div className="text-muted small" id="wd-assignment-description">
+                  <span className="text-danger">Multiple Modules</span> | 
+                  <strong> Not available until</strong> May 6 at 12:00am | 
+                  <strong> Due</strong> May 13 at 11:59pm | 
+                  100 pts
+                </div>
+              </div>
+              <AssignmentControlButtons />
+            </ListGroup.Item>
+            <ListGroup.Item className="wd-assignment p-3 ps-1 d-flex align-items-center">
+              <BsGripVertical className="me-2 fs-3" />
+              <LuFilePenLine className="me-2 fs-3" color="green" />
+              <div className="d-flex flex-column flex-grow-1">
+                <a className="wd-assignment-link" href="#/Kambaz/Courses/1234/Assignments/234">
+                  <strong>A2</strong>
+                </a>
+                <div className="text-muted small" id="wd-assignment-description">
+                  <span className="text-danger">Multiple Modules</span> | 
+                  <strong> Not available until</strong> May 13 at 12:00am | 
+                  <strong> Due</strong> May 20 at 11:59pm | 
+                  100 pts
+                </div>
+              </div>
+              <AssignmentControlButtons />
+            </ListGroup.Item>
+            <ListGroup.Item className="wd-assignment p-3 ps-1 d-flex align-items-center">
+              <BsGripVertical className="me-2 fs-3" />
+              <LuFilePenLine className="me-2 fs-3" color="green" />
+              <div className="d-flex flex-column flex-grow-1">
+                <a className="wd-assignment-link" href="#/Kambaz/Courses/1234/Assignments/123">
+                  <strong>A3</strong>
+                </a>
+                <div className="text-muted small" id="wd-assignment-description">
+                  <span className="text-danger">Multiple Modules</span> | 
+                  <strong> Not available until</strong> May 20 at 12:00am | 
+                  <strong> Due</strong> May 27 at 11:59pm | 
+                  100 pts
+                </div>
+              </div>
+              <AssignmentControlButtons />
+            </ListGroup.Item>
+          </ListGroup>
+        </ListGroup.Item>
+      </ListGroup>
     </div>
 );}
