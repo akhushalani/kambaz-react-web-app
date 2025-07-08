@@ -1,26 +1,39 @@
 import Nav from "react-bootstrap/Nav";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+
 export default function TOC() {
+  const location = useLocation();
+  const currentPath = location.pathname;
+
+  const links = [
+    { to: "/Labs", label: "Labs" },
+    { to: "/Labs/Lab1", label: "Lab 1" },
+    { to: "/Labs/Lab2", label: "Lab 2" },
+    { to: "/Labs/Lab3", label: "Lab 3" },
+    { to: "/Kambaz", label: "Kambaz" },
+  ];
+
   return (
     <Nav variant="pills">
+      {links.map((link) => {
+        const isActive = currentPath === link.to;
+
+        return (
+          <Nav.Item key={link.to}>
+            <Nav.Link
+              as={Link}
+              to={link.to}
+              active={isActive}
+            >
+              {link.label}
+            </Nav.Link>
+          </Nav.Item>
+        );
+      })}
+
       <Nav.Item>
-       <Nav.Link to="/Labs" as={Link}>Lab 1</Nav.Link>
-     </Nav.Item>
-     <Nav.Item>
-       <Nav.Link to="/Labs/Lab1" as={Link}>Lab 1</Nav.Link>
-     </Nav.Item>
-     <Nav.Item>
-       <Nav.Link to="/Labs/Lab2" as={Link} active>Lab 2</Nav.Link>
-     </Nav.Item>
-     <Nav.Item>
-       <Nav.Link to="/Labs/Lab3" as={Link}>Lab 3</Nav.Link>
-     </Nav.Item>
-     <Nav.Item>
-       <Nav.Link to="/Kambaz" as={Link}>Kambaz</Nav.Link>
-     </Nav.Item>
-     <Nav.Item>
-       <Nav.Link href="https://github.com/akhushalani/kambaz-react-web-app">My GitHub</Nav.Link>
-     </Nav.Item>
+        <Nav.Link href="https://github.com/akhushalani/kambaz-react-web-app">My GitHub</Nav.Link>
+      </Nav.Item>
     </Nav>
   );
 }
