@@ -1,31 +1,35 @@
 import { Form, FormControl, FormGroup, FormLabel, Row, Col, Card, Button } from "react-bootstrap";
+import { useParams } from "react-router";
+import * as db from "../../Database";
 export default function AssignmentEditor() {
+  const { aid } = useParams();
+  const assignment = db.assignments.find(a => a._id === aid);
   return (
     <Form id="wd-assignments-editor" className="p-3">
       <FormGroup as={Row} className="mb-3" controlId="wd-name">
         <FormLabel column sm={8}>Assignment Name</FormLabel>
         <Col sm={8}>
-          <FormControl />
+          <FormControl value={assignment?.title} />
         </Col>
       </FormGroup>
       <Form.Group as={Row} className="mb-3" controlId="wd-description">
         <Col sm={8}>
-          <FormControl as="textarea" rows={16} />
+          <FormControl as="textarea" rows={16} value={assignment?.description} />
         </Col>
       </Form.Group>
       <Form.Group as={Row} className="mb-4" controlId="wd-points">
         <Form.Label column sm={3} className="text-end">
           Points
         </Form.Label>
-        <Col sm={4}>
-          <Form.Control type="number" defaultValue={100} />
+        <Col sm={5}>
+          <Form.Control type="number" defaultValue={assignment?.points} />
         </Col>
       </Form.Group>
       <Form.Group as={Row} className="mb-4" controlId="wd-group">
         <Form.Label column sm={3} className="text-end">
           Assignment Group
         </Form.Label>
-        <Col sm={4}>
+        <Col sm={5}>
           <Form.Select defaultValue="ASSIGNMENTS">
             <option value="ASSIGNMENTS">ASSIGNMENTS</option>
             <option value="QUIZZES">QUIZZES</option>
@@ -38,7 +42,7 @@ export default function AssignmentEditor() {
         <Form.Label column sm={3} className="text-end">
           Display Grade as
         </Form.Label>
-        <Col sm={4}>
+        <Col sm={5}>
           <Form.Select defaultValue="PERCENTAGE">
             <option value="PERCENTAGE">Percentage</option>
             <option value="RAW-SCORE">Raw Score</option>
@@ -49,7 +53,7 @@ export default function AssignmentEditor() {
         <Form.Label column sm={3} className="text-end pt-2">
           Submission Type
         </Form.Label>
-        <Col sm={4}>
+        <Col sm={5}>
           <Card body>
             <Form.Select defaultValue="ONLINE" className="mb-3">
               <option value="ONLINE">Online</option>
@@ -69,22 +73,35 @@ export default function AssignmentEditor() {
         <Form.Label column sm={3} className="text-end pt-2">
           Assign
         </Form.Label>
-        <Col sm={4}>
+        <Col sm={5}>
           <Card body>
             <div className="mb-2 fw-bold">Assign To</div>
             <Form.Control id="wd-assign-to" defaultValue="Everyone" className="mb-3" />
 
             <div className="mb-2 fw-bold">Due</div>
-            <Form.Control type="date" id="wd-due-date" defaultValue="2025-05-13" className="mb-3" />
+            <Form.Control
+              type="datetime-local"
+              id="wd-due-datetime"
+              value={assignment?.dueDate?.slice(0, 16)}
+              className="mb-3"
+            />
 
-            <Row>
-              <Col>
+            <Row className="g-3">
+              <Col xs={12} md={6}>
                 <div className="mb-2 fw-bold">Available from</div>
-                <Form.Control type="date" id="wd-available-from" defaultValue="2025-05-06" />
+                <Form.Control
+                  type="datetime-local"
+                  id="wd-available-from-datetime"
+                  value={assignment?.availableFrom?.slice(0, 16)}
+                />
               </Col>
-              <Col>
+              <Col xs={12} md={6}>
                 <div className="mb-2 fw-bold">Until</div>
-                <Form.Control type="date" id="wd-available-until" defaultValue="2025-05-20" />
+                <Form.Control
+                  type="datetime-local"
+                  id="wd-available-until-datetime"
+                  value={assignment?.availableUntil?.slice(0, 16)}
+                />
               </Col>
             </Row>
           </Card>

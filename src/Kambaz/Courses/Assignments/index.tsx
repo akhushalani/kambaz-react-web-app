@@ -5,7 +5,18 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import AssignmentToolbarControlButtons from "./AssignmentToolbarControlButtons";
 import { LuFilePenLine } from "react-icons/lu";
 import AssignmentControlButtons from "./AssignmentControlButtons";
+import { useParams } from "react-router";
+import * as db from "../../Database";
+
+function formatDateTime(dateString: string) {
+  const options = { month: "long", day: "numeric", hour: "numeric", minute: "2-digit" };
+  const date = new Date(dateString);
+  return date.toLocaleString("en-US", options).replace(",", " at");
+}
+
 export default function Assignments() {
+  const { cid } = useParams();
+  const assignments = db.assignments;
   return (
     <div id="wd-assignments">
       <AssignmentsControls /><br />
@@ -15,55 +26,26 @@ export default function Assignments() {
             <BsGripVertical className="me-2 fs-3" /><IoMdArrowDropdown className="me-2 fs-3" />ASSIGNMENTS <AssignmentToolbarControlButtons />
           </div>
           <ListGroup className="wd-assignments rounded-0">
+            {assignments
+              .filter((assignment: any) => assignment.course === cid)
+              .map((assignment: any) => (
             <ListGroup.Item className="wd-assignment p-3 ps-1 d-flex align-items-center">
               <BsGripVertical className="me-2 fs-3" />
               <LuFilePenLine className="me-2 fs-3" color="green" />
               <div className="d-flex flex-column flex-grow-1">
-                <a className="wd-assignment-link" href="#/Kambaz/Courses/1234/Assignments/123">
-                  <strong>A1</strong>
+                <a className="wd-assignment-link" href={`#/Kambaz/Courses/${cid}/Assignments/${assignment._id}`}>
+                  <strong>{assignment.title}</strong>
                 </a>
                 <div className="text-muted small" id="wd-assignment-description">
                   <span className="text-danger">Multiple Modules</span> | 
-                  <strong> Not available until</strong> May 6 at 12:00am | 
-                  <strong> Due</strong> May 13 at 11:59pm | 
-                  100 pts
+                  <strong> Not available until</strong> {formatDateTime(assignment.availableFrom)} | 
+                  <strong> Due</strong> {formatDateTime(assignment.dueDate)} | 
+                  <span> {assignment.points} pts</span>
                 </div>
               </div>
               <AssignmentControlButtons />
             </ListGroup.Item>
-            <ListGroup.Item className="wd-assignment p-3 ps-1 d-flex align-items-center">
-              <BsGripVertical className="me-2 fs-3" />
-              <LuFilePenLine className="me-2 fs-3" color="green" />
-              <div className="d-flex flex-column flex-grow-1">
-                <a className="wd-assignment-link" href="#/Kambaz/Courses/1234/Assignments/234">
-                  <strong>A2</strong>
-                </a>
-                <div className="text-muted small" id="wd-assignment-description">
-                  <span className="text-danger">Multiple Modules</span> | 
-                  <strong> Not available until</strong> May 13 at 12:00am | 
-                  <strong> Due</strong> May 20 at 11:59pm | 
-                  100 pts
-                </div>
-              </div>
-              <AssignmentControlButtons />
-            </ListGroup.Item>
-            <ListGroup.Item className="wd-assignment p-3 ps-1 d-flex align-items-center">
-              <BsGripVertical className="me-2 fs-3" />
-              <LuFilePenLine className="me-2 fs-3" color="green" />
-              <div className="d-flex flex-column flex-grow-1">
-                <a className="wd-assignment-link" href="#/Kambaz/Courses/1234/Assignments/123">
-                  <strong>A3</strong>
-                </a>
-                <div className="text-muted small" id="wd-assignment-description">
-                  <span className="text-danger">Multiple Modules</span> | 
-                  <strong> Not available until</strong> May 20 at 12:00am | 
-                  <strong> Due</strong> May 27 at 11:59pm | 
-                  100 pts
-                </div>
-              </div>
-              <AssignmentControlButtons />
-            </ListGroup.Item>
-          </ListGroup>
+          ))}</ListGroup>
         </ListGroup.Item>
       </ListGroup>
     </div>

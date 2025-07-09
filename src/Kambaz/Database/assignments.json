@@ -1,0 +1,249 @@
+[
+  {
+    "_id": "A101",
+    "title": "Propulsion Fundamentals Assignment",
+    "course": "RS101",
+    "description": "This assignment requires a detailed derivation of propulsion equations and a case study analysis.\nInclude at least two worked-out example problems and discuss the limitations of ideal rocket assumptions.",
+    "points": 100,
+    "dueDate": "2023-04-01T23:59:00",
+    "availableFrom": "2023-02-15T08:00:00",
+    "availableUntil": "2023-04-02T23:59:00"
+  },
+  {
+    "_id": "A102",
+    "title": "Combustion Analysis Report",
+    "course": "RS101",
+    "description": "Prepare a multi-section report analyzing combustion stability.\nDiscuss real-world examples of combustion instability and propose mitigation strategies based on current research.",
+    "points": 90,
+    "dueDate": "2023-04-10T23:59:00",
+    "availableFrom": "2023-02-20T08:00:00",
+    "availableUntil": "2023-04-11T23:59:00"
+  },
+  {
+    "_id": "A103",
+    "title": "Nozzle Design Project",
+    "course": "RS101",
+    "description": "Design a converging-diverging nozzle for a target altitude.\nInclude calculations, design drawings, and a short presentation summarizing your design choices and optimizations.",
+    "points": 120,
+    "dueDate": "2023-04-20T23:59:00",
+    "availableFrom": "2023-02-25T08:00:00",
+    "availableUntil": "2023-04-21T23:59:00"
+  },
+
+  {
+    "_id": "A201",
+    "title": "Aerodynamics Quiz",
+    "course": "RS102",
+    "description": "Timed online quiz covering fundamental aerodynamic principles.\nExpect questions on Bernoulli's equation, lift generation, and flow classification with both conceptual and numerical problems.",
+    "points": 50,
+    "dueDate": "2023-03-15T23:59:00",
+    "availableFrom": "2023-02-10T08:00:00",
+    "availableUntil": "2023-03-16T23:59:00"
+  },
+  {
+    "_id": "A202",
+    "title": "Flow Analysis Assignment",
+    "course": "RS102",
+    "description": "Analyze subsonic and supersonic flow patterns over an airfoil.\nSubmit plots generated via simulation software and include an interpretation of results with emphasis on shock formation.",
+    "points": 85,
+    "dueDate": "2023-03-25T23:59:00",
+    "availableFrom": "2023-02-12T08:00:00",
+    "availableUntil": "2023-03-26T23:59:00"
+  },
+  {
+    "_id": "A203",
+    "title": "Aerodynamic Heating Report",
+    "course": "RS102",
+    "description": "Write a detailed technical report on aerodynamic heating mechanisms.\nInclude real-world case studies, design considerations for TPS (Thermal Protection Systems), and calculations for heat flux.",
+    "points": 95,
+    "dueDate": "2023-04-05T23:59:00",
+    "availableFrom": "2023-02-18T08:00:00",
+    "availableUntil": "2023-04-06T23:59:00"
+  },
+
+  {
+    "_id": "A301",
+    "title": "Structural Design Task",
+    "course": "RS103",
+    "description": "Perform structural analysis of a spacecraft component.\nDocument material selection, stress calculations, and provide a CAD model snapshot.",
+    "points": 100,
+    "dueDate": "2023-03-20T23:59:00",
+    "availableFrom": "2023-02-15T08:00:00",
+    "availableUntil": "2023-03-21T23:59:00"
+  },
+  {
+    "_id": "A302",
+    "title": "Orbital Calculations Homework",
+    "course": "RS103",
+    "description": "Solve a set of orbital mechanics problems, including Hohmann transfers and delta-v budget calculations.\nShow all steps clearly and provide any MATLAB or Python code used.",
+    "points": 90,
+    "dueDate": "2023-03-30T23:59:00",
+    "availableFrom": "2023-02-20T08:00:00",
+    "availableUntil": "2023-03-31T23:59:00"
+  },
+  {
+    "_id": "A303",
+    "title": "Systems Engineering Exam",
+    "course": "RS103",
+    "description": "Closed-book online exam covering spacecraft subsystems integration.\nQuestions will include short answers, design choices, and trade studies to evaluate engineering compromises.",
+    "points": 110,
+    "dueDate": "2023-04-10T23:59:00",
+    "availableFrom": "2023-02-25T08:00:00",
+    "availableUntil": "2023-04-11T23:59:00"
+  },
+
+  {
+    "_id": "A401",
+    "title": "Hydrocarbons Assignment",
+    "course": "RS104",
+    "description": "Classify organic compounds by functional groups.\nDraw structures, name according to IUPAC rules, and provide reaction examples.",
+    "points": 80,
+    "dueDate": "2023-03-18T23:59:00",
+    "availableFrom": "2023-02-10T08:00:00",
+    "availableUntil": "2023-03-19T23:59:00"
+  },
+  {
+    "_id": "A402",
+    "title": "Stereochemistry Problems",
+    "course": "RS104",
+    "description": "Solve stereochemical configurations of molecules.\nInclude Fischer projections, R/S designations, and meso compound identification.",
+    "points": 85,
+    "dueDate": "2023-03-28T23:59:00",
+    "availableFrom": "2023-02-15T08:00:00",
+    "availableUntil": "2023-03-29T23:59:00"
+  },
+  {
+    "_id": "A403",
+    "title": "Organic Synthesis Planning",
+    "course": "RS104",
+    "description": "Design a multistep synthesis for a target molecule.\nJustify each reagent choice and reaction condition with literature references.",
+    "points": 95,
+    "dueDate": "2023-04-08T23:59:00",
+    "availableFrom": "2023-02-20T08:00:00",
+    "availableUntil": "2023-04-09T23:59:00"
+  },
+
+  {
+    "_id": "A501",
+    "title": "Coordination Complex Design",
+    "course": "RS105",
+    "description": "Propose and describe the geometry and bonding of a novel coordination complex.\nInclude spectroscopic data interpretation and potential applications.",
+    "points": 90,
+    "dueDate": "2023-03-22T23:59:00",
+    "availableFrom": "2023-02-12T08:00:00",
+    "availableUntil": "2023-03-23T23:59:00"
+  },
+  {
+    "_id": "A502",
+    "title": "Bonding Theory Essay",
+    "course": "RS105",
+    "description": "Write a detailed essay comparing crystal field theory and molecular orbital theory.\nUse examples to illustrate differences in prediction and application.",
+    "points": 85,
+    "dueDate": "2023-03-30T23:59:00",
+    "availableFrom": "2023-02-17T08:00:00",
+    "availableUntil": "2023-03-31T23:59:00"
+  },
+  {
+    "_id": "A503",
+    "title": "Inorganic Chemistry Applications Report",
+    "course": "RS105",
+    "description": "Prepare a report on real-world inorganic chemistry applications.\nFocus on catalysis, materials science, and bioinorganic systems with case studies.",
+    "points": 100,
+    "dueDate": "2023-04-09T23:59:00",
+    "availableFrom": "2023-02-22T08:00:00",
+    "availableUntil": "2023-04-10T23:59:00"
+  },
+
+  {
+    "_id": "A601",
+    "title": "Thermodynamics Problem Set",
+    "course": "RS106",
+    "description": "Solve problems involving first and second laws.\nInclude entropy calculations and Gibbs energy derivations.",
+    "points": 90,
+    "dueDate": "2023-03-24T23:59:00",
+    "availableFrom": "2023-02-12T08:00:00",
+    "availableUntil": "2023-03-25T23:59:00"
+  },
+  {
+    "_id": "A602",
+    "title": "Kinetics Data Analysis",
+    "course": "RS106",
+    "description": "Analyze experimental rate data.\nPlot concentration vs. time and determine rate constants using integrated forms.",
+    "points": 85,
+    "dueDate": "2023-04-03T23:59:00",
+    "availableFrom": "2023-02-17T08:00:00",
+    "availableUntil": "2023-04-04T23:59:00"
+  },
+  {
+    "_id": "A603",
+    "title": "Quantum Chemistry Essay",
+    "course": "RS106",
+    "description": "Write an essay explaining key quantum mechanical principles.\nDiscuss wavefunctions, operators, and spectroscopic applications with equations.",
+    "points": 95,
+    "dueDate": "2023-04-13T23:59:00",
+    "availableFrom": "2023-02-22T08:00:00",
+    "availableUntil": "2023-04-14T23:59:00"
+  },
+
+  {
+    "_id": "A701",
+    "title": "Elvish Grammar Assignment",
+    "course": "RS107",
+    "description": "Translate a passage into Quenya and Sindarin.\nProvide grammatical analysis and commentary on differences between the two languages.",
+    "points": 80,
+    "dueDate": "2023-03-18T23:59:00",
+    "availableFrom": "2023-02-10T08:00:00",
+    "availableUntil": "2023-03-19T23:59:00"
+  },
+  {
+    "_id": "A702",
+    "title": "Dwarvish and Black Speech Exercise",
+    "course": "RS107",
+    "description": "Decipher provided inscriptions in Khuzdul and Black Speech.\nOffer transliterations and discuss cultural significance.",
+    "points": 85,
+    "dueDate": "2023-03-28T23:59:00",
+    "availableFrom": "2023-02-15T08:00:00",
+    "availableUntil": "2023-03-29T23:59:00"
+  },
+  {
+    "_id": "A703",
+    "title": "Philological Analysis Report",
+    "course": "RS107",
+    "description": "Prepare a detailed philological analysis of selected Middle-earth texts.\nInclude language evolution, linguistic features, and historical context.",
+    "points": 95,
+    "dueDate": "2023-04-08T23:59:00",
+    "availableFrom": "2023-02-20T08:00:00",
+    "availableUntil": "2023-04-09T23:59:00"
+  },
+
+  {
+    "_id": "A801",
+    "title": "Diplomatic History Essay",
+    "course": "RS108",
+    "description": "Write an essay analyzing key diplomatic events in Middle-earth history.\nFocus on alliances, conflicts, and their long-term consequences.",
+    "points": 90,
+    "dueDate": "2023-03-22T23:59:00",
+    "availableFrom": "2023-02-12T08:00:00",
+    "availableUntil": "2023-03-23T23:59:00"
+  },
+  {
+    "_id": "A802",
+    "title": "Conflict Resolution Proposal",
+    "course": "RS108",
+    "description": "Develop a plan to resolve an inter-species conflict scenario.\nInclude negotiation strategies and alliance-building techniques tailored to Middle-earth cultures.",
+    "points": 85,
+    "dueDate": "2023-03-30T23:59:00",
+    "availableFrom": "2023-02-17T08:00:00",
+    "availableUntil": "2023-03-31T23:59:00"
+  },
+  {
+    "_id": "A803",
+    "title": "Leadership Case Study",
+    "course": "RS108",
+    "description": "Analyze leadership decisions during the War of the Ring.\nDiscuss the role of wisdom, sacrifice, and alliance in maintaining peace.",
+    "points": 100,
+    "dueDate": "2023-04-09T23:59:00",
+    "availableFrom": "2023-02-22T08:00:00",
+    "availableUntil": "2023-04-10T23:59:00"
+  }
+]
