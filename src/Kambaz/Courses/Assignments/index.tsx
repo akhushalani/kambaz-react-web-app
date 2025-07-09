@@ -9,7 +9,7 @@ import { useParams } from "react-router";
 import * as db from "../../Database";
 
 function formatDateTime(dateString: string) {
-  const options = { month: "long", day: "numeric", hour: "numeric", minute: "2-digit" };
+  const options: Intl.DateTimeFormatOptions = { month: "long", day: "numeric", hour: "numeric", minute: "2-digit" };
   const date = new Date(dateString);
   return date.toLocaleString("en-US", options).replace(",", " at");
 }
