@@ -10,6 +10,7 @@ export default function TOC() {
     { to: "/Labs/Lab1", label: "Lab 1" },
     { to: "/Labs/Lab2", label: "Lab 2" },
     { to: "/Labs/Lab3", label: "Lab 3" },
+    { to: "/Labs/Lab4", label: "Lab 4" },
     { to: "/Kambaz", label: "Kambaz" },
   ];
 

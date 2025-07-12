@@ -6,7 +6,8 @@ import AssignmentToolbarControlButtons from "./AssignmentToolbarControlButtons";
 import { LuFilePenLine } from "react-icons/lu";
 import AssignmentControlButtons from "./AssignmentControlButtons";
 import { useParams } from "react-router";
-import * as db from "../../Database";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteAssignment } from "./reducer";
 
 function formatDateTime(dateString: string) {
   const options: Intl.DateTimeFormatOptions = { month: "long", day: "numeric", hour: "numeric", minute: "2-digit" };
@@ -16,7 +17,16 @@ function formatDateTime(dateString: string) {
 
 export default function Assignments() {
   const { cid } = useParams();
-  const assignments = db.assignments;
+  const assignments = useSelector((state: any) => state.assignmentsReducer.assignments);
+  const dispatch = useDispatch();
+  const handleDelete = (assignmentId: string) => {
+    const confirmed = window.confirm("Are you sure you want to delete this assignment?");
+    if (confirmed) {
+      dispatch(deleteAssignment(assignmentId));
+    }
+  };
+  const currentUser = useSelector((state: any) => state.accountReducer.currentUser);
+  const isFaculty = currentUser?.role === "FACULTY";
   return (
     <div id="wd-assignments">
       <AssignmentsControls /><br />
@@ -33,9 +43,12 @@ export default function Assignments() {
               <BsGripVertical className="me-2 fs-3" />
               <LuFilePenLine className="me-2 fs-3" color="green" />
               <div className="d-flex flex-column flex-grow-1">
+                {isFaculty && (
                 <a className="wd-assignment-link" href={`#/Kambaz/Courses/${cid}/Assignments/${assignment._id}`}>
                   <strong>{assignment.title}</strong>
                 </a>
+                )}
+                {!isFaculty && (<strong>{assignment.title}</strong>)}
                 <div className="text-muted small" id="wd-assignment-description">
                   <span className="text-danger">Multiple Modules</span> | 
                   <strong> Not available until</strong> {formatDateTime(assignment.availableFrom)} | 
@@ -43,7 +56,9 @@ export default function Assignments() {
                   <span> {assignment.points} pts</span>
                 </div>
               </div>
-              <AssignmentControlButtons />
+              <AssignmentControlButtons 
+                assignmentId={assignment._id} 
+                deleteAssignment={handleDelete} />
             </ListGroup.Item>
           ))}</ListGroup>
         </ListGroup.Item>
