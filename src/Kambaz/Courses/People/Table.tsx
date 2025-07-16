@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Table, Spinner } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
 import * as courseClient from "../client";  // adjust path to wherever you put your client method
 
