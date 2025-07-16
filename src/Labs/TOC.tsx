@@ -34,7 +34,13 @@ export default function TOC() {
       })}
 
       <Nav.Item>
-        <Nav.Link href="https://github.com/akhushalani/kambaz-react-web-app">My GitHub</Nav.Link>
+        <Nav.Link href="https://github.com/akhushalani/kambaz-react-web-app">React GitHub</Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
+        <Nav.Link href="https://github.com/akhushalani/kambaz-node-server-app">Server GitHub</Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
+        <Nav.Link href="https://kambaz-node-server-app-hh98.onrender.com">Server Root</Nav.Link>
       </Nav.Item>
     </Nav>
   );
