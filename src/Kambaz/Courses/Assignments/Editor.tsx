@@ -1,50 +1,65 @@
 import { Form, FormControl, FormGroup, FormLabel, Row, Col, Card, Button } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
-import { addAssignment, updateAssignment } from "./reducer";
+import { useState, useEffect } from "react";
+import * as assignmentsClient from "./client";
+import * as coursesClient from "../client";
 
 export default function AssignmentEditor() {
   const { cid, aid } = useParams();
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const isNew = aid === "new";
 
-  const assignments = useSelector((state: any) => state.assignmentsReducer.assignments);
-  const existing = assignments.find((a: any) => a._id === aid);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [points, setPoints] = useState(100);
+  const [dueDate, setDueDate] = useState("");
+  const [availableFrom, setAvailableFrom] = useState("");
+  const [availableUntil, setAvailableUntil] = useState("");
 
-  const [title, setTitle] = useState(existing?.title || "");
-  const [description, setDescription] = useState(existing?.description || "");
-  const [points, setPoints] = useState(existing?.points || 100);
-  const [dueDate, setDueDate] = useState(existing?.dueDate?.slice(0, 16) || "");
-  const [availableFrom, setAvailableFrom] = useState(existing?.availableFrom?.slice(0, 16) || "");
-  const [availableUntil, setAvailableUntil] = useState(existing?.availableUntil?.slice(0, 16) || "");
+  useEffect(() => {
+    const loadAssignment = async () => {
+      if (!isNew && cid) {
+        try {
+          const assignments = await coursesClient.findAssignmentsForCourse(cid);
+          const existing = assignments.find((a: any) => a._id === aid);
+          if (existing) {
+            setTitle(existing.title || "");
+            setDescription(existing.description || "");
+            setPoints(existing.points || 100);
+            setDueDate(existing.dueDate?.slice(0, 16) || "");
+            setAvailableFrom(existing.availableFrom?.slice(0, 16) || "");
+            setAvailableUntil(existing.availableUntil?.slice(0, 16) || "");
+          }
+        } catch (err) {
+          console.error("Error loading assignment:", err);
+        }
+      }
+    };
 
-  const handleSave = () => {
-    if (isNew) {
-      dispatch(addAssignment({
-        title,
-        description,
-        points,
-        dueDate,
-        availableFrom,
-        availableUntil,
-        course: cid
-      }));
-    } else {
-      dispatch(updateAssignment({
-        _id: aid,
-        title,
-        description,
-        points,
-        dueDate,
-        availableFrom,
-        availableUntil,
-        course: cid
-      }));
+    loadAssignment();
+  }, [isNew, aid, cid]);
+
+  const handleSave = async () => {
+    const assignmentData = {
+      title,
+      description,
+      points,
+      dueDate,
+      availableFrom,
+      availableUntil,
+      course: cid,
+    };
+  
+    try {
+      if (isNew) {
+        await assignmentsClient.createAssignment(assignmentData);
+      } else {
+        await assignmentsClient.updateAssignment({ ...assignmentData, _id: aid });
+      }
+      navigate(-1);
+    } catch (err) {
+      console.error("Error saving assignment:", err);
     }
-    navigate(-1);
   };
 
   const handleCancel = () => {
@@ -143,12 +158,11 @@ export default function AssignmentEditor() {
         <Col sm={5}>
           <Card body>
             <div className="mb-2 fw-bold">Assign To</div>
-            <Form.Control id="wd-assign-to" defaultValue="Everyone" className="mb-3" />
+            <Form.Control defaultValue="Everyone" className="mb-3" />
 
             <div className="mb-2 fw-bold">Due</div>
             <Form.Control
               type="datetime-local"
-              id="wd-due-datetime"
               value={dueDate}
               onChange={(e) => setDueDate(e.target.value)}
               className="mb-3"
@@ -159,7 +173,6 @@ export default function AssignmentEditor() {
                 <div className="mb-2 fw-bold">Available from</div>
                 <Form.Control
                   type="datetime-local"
-                  id="wd-available-from-datetime"
                   value={availableFrom}
                   onChange={(e) => setAvailableFrom(e.target.value)}
                 />
@@ -168,7 +181,6 @@ export default function AssignmentEditor() {
                 <div className="mb-2 fw-bold">Until</div>
                 <Form.Control
                   type="datetime-local"
-                  id="wd-available-until-datetime"
                   value={availableUntil}
                   onChange={(e) => setAvailableUntil(e.target.value)}
                 />
@@ -182,10 +194,10 @@ export default function AssignmentEditor() {
 
       <Row className="justify-content-end">
         <Col sm={6}>
-          <Button variant="secondary" id="wd-cancel" className="me-2" onClick={handleCancel}>
+          <Button variant="secondary" className="me-2" onClick={handleCancel}>
             Cancel
           </Button>
-          <Button variant="danger" id="wd-save" onClick={handleSave}>
+          <Button variant="danger" onClick={handleSave}>
             Save
           </Button>
         </Col>
