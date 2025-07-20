@@ -4,6 +4,7 @@ export default function AccountNavigation() {
   const location = useLocation();
   const currentPath = location.pathname;
   const { currentUser } = useSelector((state: any) => state.accountReducer);
+  const active = (path: string) => (currentPath.includes(path) ? "active" : "text-danger");
 
   const links = currentUser? [
     { to: "/Kambaz/Account/Profile", label: "Profile" },
@@ -26,6 +27,8 @@ export default function AccountNavigation() {
           </Link>
         );
       })}
+      {currentUser && currentUser.role === "ADMIN" && (
+       <Link to={`/Kambaz/Account/Users`} className={`list-group-item border border-0 ${active("Users")}`}> Users </Link> )}
     </div>
   );
 }
