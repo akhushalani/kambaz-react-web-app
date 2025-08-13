@@ -65,7 +65,7 @@ export default function Dashboard() {
 
   const handleAddCourse = async () => {
     await userClient.createCourse(draftCourse);
-    fetchAllCourses();
+    fetchMyCourses();
     setDraftCourse({
       name: "New Course",
       number: "New Number",
@@ -77,7 +77,7 @@ export default function Dashboard() {
 
   const handleUpdateCourse = async () => {
     await courseClient.updateCourse(draftCourse);
-    fetchAllCourses();
+    fetchMyCourses();
     setDraftCourse({
       name: "New Course",
       number: "New Number",
