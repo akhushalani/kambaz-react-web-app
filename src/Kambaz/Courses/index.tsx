@@ -5,10 +5,14 @@ import Modules from "./Modules";
 import Home from "./Home";
 import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/Editor";
+import Quizzes from "./Quizzes";
 import { FaAlignJustify } from "react-icons/fa6";
 import PeopleTable from "./People/Table";
 import { useSelector } from "react-redux";
 import * as coursesClient from "./client"; 
+import QuizDetails from "./Quizzes/Details";
+import QuizEditor from "./Quizzes/Editor";
+import QuizRunner from "./Quizzes/Runner";
 
 export default function Courses() {
   const { cid } = useParams();
@@ -51,6 +55,11 @@ export default function Courses() {
             <Route path="Modules" element={<Modules />} />
             <Route path="Assignments" element={<Assignments />} />
             <Route path="Assignments/:aid" element={<AssignmentEditor />} />
+            <Route path="Quizzes" element={<Quizzes />} />
+            <Route path="Quizzes/:qid" element={<QuizDetails />} />
+            <Route path="Quizzes/:qid/Edit/*" element={<QuizEditor />} />
+            <Route path="Quizzes/:qid/Preview" element={<QuizRunner mode="faculty" />} />
+            <Route path="Quizzes/:qid/Take" element={<QuizRunner mode="student" />} />
             <Route path="People" element={<PeopleTable users={users} />} />
           </Routes>
         </div>
