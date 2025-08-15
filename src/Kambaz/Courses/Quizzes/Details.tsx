@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Button, Card, Table } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router";
 import { useSelector } from "react-redux";
+import { BsCheckCircleFill, BsSlashCircle } from "react-icons/bs";
 import * as quizzesClient from "./client";
 
 type QuizType = "GRADED_QUIZ" | "PRACTICE_QUIZ" | "GRADED_SURVEY" | "UNGRADED_SURVEY";
@@ -50,37 +51,66 @@ export default function QuizDetails() {
 
   if (!quiz) return null;
 
+  const handlePublishToggle = async () => {
+    if (!qid || !quiz) return;
+    const prev = quiz.published;
+    const next = !prev;
+  
+    setQuiz({ ...quiz, published: next });
+    try {
+      await quizzesClient.updateQuiz({ _id: qid, published: next });
+    } catch (e) {
+      setQuiz({ ...quiz, published: prev });
+      console.error("Failed to toggle publish:", e);
+    }
+  };
+
   const typeLabel = TYPE_LABEL[(quiz.type as QuizType) ?? "GRADED_QUIZ"] ?? "Graded Quiz";
 
   return (
     <div id="wd-quiz-details" className="mt-3">
-      <div className="d-flex justify-content-center mb-3 gap-2">
+      <div className="d-flex justify-content-center align-items-center mb-3 gap-2">
         {isStudent && (
-          <Button
+            <Button
             id="wd-quiz-start"
             variant="primary"
             onClick={() => navigate(`/Kambaz/Courses/${cid}/Quizzes/${qid}/Take`)}
-          >
+            >
             Start Quiz
-          </Button>
+            </Button>
         )}
+
         {isFaculty && (
-          <>
+            <>
             <Button
-              id="wd-quiz-preview"
-              variant="secondary"
-              onClick={() => navigate(`/Kambaz/Courses/${cid}/Quizzes/${qid}/Preview`)}
+                id="wd-quiz-preview"
+                variant="secondary"
+                onClick={() => navigate(`/Kambaz/Courses/${cid}/Quizzes/${qid}/Preview`)}
             >
-              Preview
+                Preview
             </Button>
+
             <Button
-              id="wd-quiz-edit"
-              variant="outline-secondary"
-              onClick={() => navigate(`/Kambaz/Courses/${cid}/Quizzes/${qid}/Edit`)}
+                id="wd-quiz-edit"
+                variant="outline-secondary"
+                onClick={() => navigate(`/Kambaz/Courses/${cid}/Quizzes/${qid}/Edit`)}
             >
-              Edit
+                Edit
             </Button>
-          </>
+
+            <Button
+                id="wd-quiz-publish-toggle"
+                variant={quiz.published ? "outline-secondary" : "success"}
+                onClick={handlePublishToggle}
+                title={quiz.published ? "Unpublish" : "Publish"}
+            >
+                {quiz.published ? (
+                <> <BsSlashCircle className="me-1" /> Unpublish</>
+                ) : (
+                <> <BsCheckCircleFill className="me-1" /> Publish</>
+                )}
+            </Button>
+            </>
         )}
       </div>
 

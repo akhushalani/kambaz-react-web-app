@@ -256,7 +256,7 @@ export default function Quizzes() {
                         <BsThreeDotsVertical />
                       </Dropdown.Toggle>
                       <Dropdown.Menu>
-                        <Dropdown.Item onClick={() => navigate(`/Kambaz/Courses/${cid}/Quizzes/${quiz._id}`)}>
+                        <Dropdown.Item onClick={() => navigate(`/Kambaz/Courses/${cid}/Quizzes/${quiz._id}/Edit`)}>
                           Edit
                         </Dropdown.Item>
                         <Dropdown.Item onClick={() => handleDelete(quiz._id)} className="text-danger">
