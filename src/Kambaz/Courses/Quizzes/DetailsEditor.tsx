@@ -6,13 +6,6 @@ import * as quizzesClient from "./client";
 
 type QuizType = "GRADED_QUIZ" | "PRACTICE_QUIZ" | "GRADED_SURVEY" | "UNGRADED_SURVEY";
 
-const TYPE_LABEL: Record<QuizType, string> = {
-  GRADED_QUIZ: "Graded Quiz",
-  PRACTICE_QUIZ: "Practice Quiz",
-  GRADED_SURVEY: "Graded Survey",
-  UNGRADED_SURVEY: "Ungraded Survey",
-};
-
 const GROUPS = ["Quizzes", "Exams", "Assignments", "Project"];
 
 function toLocalDT(iso?: string | null) {

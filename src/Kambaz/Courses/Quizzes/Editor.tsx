@@ -1,5 +1,5 @@
 import { Nav } from "react-bootstrap";
-import { Link, Route, Routes, useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, Route, Routes, useLocation, useParams } from "react-router-dom";
 import QuizDetailsEditor from "./DetailsEditor";
 import QuizQuestionsEditor from "./QuestionsEditor";
 

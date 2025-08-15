@@ -70,7 +70,7 @@ export default function QuizQuestionsEditor() {
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(true);
-  const [quiz, setQuiz] = useState<any | null>(null);
+  const [, setQuiz] = useState<any | null>(null);
   const [questions, setQuestions] = useState<AnyQ[]>([]);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [drafts, setDrafts] = useState<Record<string, AnyQ>>({}); // per-question edit buffer

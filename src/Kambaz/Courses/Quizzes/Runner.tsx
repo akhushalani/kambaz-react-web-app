@@ -196,8 +196,6 @@ export default function QuizRunner({ mode }: { mode: Mode }) {
   }, [qid, mode, studentId]);
 
   const current = questions[idx];
-  const canPrev = idx > 0;
-  const canNext = idx < questions.length - 1;
 
   const onSubmit = async () => {
     const { score: sc, per } = gradeAll(questions, answers);
@@ -206,10 +204,6 @@ export default function QuizRunner({ mode }: { mode: Mode }) {
     setSubmitted(true);
 
     if (mode === "student" && studentId && qid) {
-      const saved = await attemptsClient.createAttempt(qid, {
-        studentId,
-        answers,
-      });
       const list = await attemptsClient.findAttemptsForStudent(qid, studentId);
       setAttempts(list || []);
     }
